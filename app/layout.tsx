@@ -1,22 +1,18 @@
-import './globals.scss'
+import "./globals.scss";
 import React, { ReactNode } from "react";
-import type { Metadata } from 'next'
-import { Open_Sans } from 'next/font/google'
+import type { Metadata } from "next";
+import { Open_Sans } from "next/font/google";
 import Header from "@/app/_components/Header/Header";
 import NewsList from "@/app/_components/NewsList/NewsList";
 
-const openSans = Open_Sans({ subsets: ['cyrillic'] })
+const openSans = Open_Sans({ subsets: ["cyrillic"] });
 
 export const metadata: Metadata = {
-  title: 'Itmo Test App',
-  description: 'News app on React, TypeScript and Next.js',
-}
+  title: "ITMO Test App",
+  description: "News app on React, TypeScript and Next.js",
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={openSans.className}>
@@ -27,5 +23,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }
