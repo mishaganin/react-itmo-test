@@ -1,0 +1,17 @@
+.newsList {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  &__title {
+    width: 100%;
+    margin: 40px 0;
+    color: #222;
+    font-family: Muller, sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}

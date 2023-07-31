@@ -1,0 +1,33 @@
+.newsCard {
+  flex-basis: calc(33.333333% - 20px);
+  margin-bottom: 40px;
+  border-radius: 16px;
+  background: #FFF;
+  box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.16);
+
+  &__image {
+    border-radius: 16px 16px 0 0;
+  }
+
+  &__content {
+    padding: 32px;
+  }
+
+  &__date {
+    color: #6A6A6A;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  &__text {
+    color: #222;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px; /* 150% */
+  }
+}
