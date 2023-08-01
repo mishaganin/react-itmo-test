@@ -1,9 +1,8 @@
+'use client'
 import React from 'react';
+import {redirect, useParams} from "next/navigation";
 
 const News = () => {
-    return (
-        <div>News</div>
-    )
 }
 
 export default News;

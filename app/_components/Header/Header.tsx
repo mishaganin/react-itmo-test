@@ -11,9 +11,10 @@ import styles from "./Header.module.scss";
 const Header = () => {
   const [isOpened, setOpened] = useState<boolean>(false);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (): void => {
     setOpened(!isOpened);
   };
+
   return (
     <header className={styles.header}>
       <div className={styles.header__content}>

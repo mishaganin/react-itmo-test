@@ -1,23 +1,32 @@
-'use client'
-import React, { useState } from 'react';
-import Image from 'next/image';
-import image from '@/public/img_1.png';
-import styles from './NewsCard.module.scss';
+"use client";
+import React from "react";
+import Image from "next/image";
+import styles from "./NewsCard.module.scss";
+import { redirect } from "next/navigation";
+import { INews } from "@/app/_global/types";
 
-const NewsCard = () => {
-    return (
-        <div className={styles.newsCard}>
-            <Image
-                src={image}
-                alt="news-image"
-                className={styles.newsCard__image}
-            />
-            <div className={styles.newsCard__content}>
-                <div className={styles.newsCard__date}>2 декабря 2019</div>
-                <p className={styles.newsCard__text}>Физарум//Перформер, 2019, Bioroboty019 это мультимедийный перформанс о связи человеческого и нечеловеческого, представленный на Кураторском форуме в Молодёжный...</p>
-            </div>
-        </div>
-    );
-}
+interface NewsCardProps extends INews {}
+
+const NewsCard = ({ id, date, imageSrc, title, url }: NewsCardProps) => {
+  const handleCardClick = () => {
+    redirect(`/news/${id}`);
+  };
+
+  return (
+    <div className={styles.newsCard} onClick={handleCardClick}>
+      <Image
+        src={imageSrc}
+        alt="news-image"
+        width={300}
+        height={300}
+        className={styles.newsCard__image}
+      />
+      <div className={styles.newsCard__content}>
+        <div className={styles.newsCard__date}>{date}</div>
+        <p className={styles.newsCard__text}>{title}</p>
+      </div>
+    </div>
+  );
+};
 
 export default NewsCard;

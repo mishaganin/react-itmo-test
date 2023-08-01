@@ -1,23 +1,29 @@
-'use client'
-import React, { useState } from 'react';
-import Image from 'next/image';
-import image from '@/public/img.png';
-import styles from './NewsList.module.scss';
+"use client";
+import React from "react";
+import styles from "./NewsList.module.scss";
 import NewsCard from "@/app/_components/NewsCard/NewsCard";
-import localFont from '@next/font/local';
+import { INews } from "@/app/_global/types";
 
-// const fontMuller = localFont({
-//     src: '../'
-// })
-
-const NewsList = () => {
-    const news = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    return (
-        <div className={styles.newsList}>
-            <h3 className={styles.newsList__title}>Новости и события</h3>
-            {news.map((article, id) => <NewsCard key={id} />)}
-        </div>
-    );
+interface NewsListProps {
+  news: INews[];
 }
+
+const NewsList = ({ news }: NewsListProps) => {
+  return (
+    <div className={styles.newsList}>
+      <h3 className={styles.newsList__title}>Новости и события</h3>
+      {news.map((article: any, id: any) => (
+        <NewsCard
+          key={article.id}
+          id={article.id}
+          date={article.date}
+          imageSrc={article.image_big}
+          title={article.title}
+          url={article.url}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default NewsList;
