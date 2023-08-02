@@ -4,11 +4,6 @@ import { fallbackLng, languages } from '@/app/_i18n/settings'
 
 acceptLanguage.languages(languages)
 
-export const config = {
-  // matcher: '/:lng*'
-  matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)']
-}
-
 const cookieName = 'i18next'
 
 export const middleware = (req: NextRequest) => {

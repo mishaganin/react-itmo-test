@@ -1,27 +1,24 @@
 import React from "react";
 import styles from "./NewsList.module.scss";
 import NewsCard from "@/app/_components/NewsCard/NewsCard";
-import { INews } from "@/app/_global/types";
-import {useTranslation} from "@/app/_i18n";
-import {useParams} from "next/navigation";
+import { INews, IParams } from "@/app/_global/types";
+import { useTranslation } from "@/app/_i18n";
 
 interface NewsListProps {
   news: INews[];
-  params: {
-    lng?: string;
-  };
+  params: IParams;
 }
 
-const NewsList = async ({ news, params }: NewsListProps) => {
+const NewsList: React.FC<NewsListProps> = async ({ news, params }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = await useTranslation(params.lng);
-  console.log(params.lng);
+
   return (
     <div className={styles.newsList}>
-      <h3 className={styles.newsList__title}>{t('title')}</h3>
-      {news.map((article: INews) => (
+      <h3 className={styles.newsList__title}>{t("title")}</h3>
+      {news.map((article: INews, id: number) => (
         <NewsCard
-          key={article.id}
+          key={`${article.id}_${id}`}
           id={article.id}
           date={article.date}
           imageSrc={article.imageSrc}

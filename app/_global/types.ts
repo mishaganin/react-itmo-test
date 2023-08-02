@@ -5,3 +5,13 @@ export interface INews {
   title: string;
   url: string;
 }
+
+export interface ILanguage {
+  name: string;
+  label: string;
+  logoSrc: string;
+}
+
+export interface IParams {
+  lng?: string;
+}

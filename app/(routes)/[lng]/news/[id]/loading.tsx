@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-const Loading = () => {
-  return <div>Loading...</div>
+const Loading: React.FC = () => {
+  return <div>Loading...</div>;
 };
 
 export default Loading;

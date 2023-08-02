@@ -1,23 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @font-face {
-    font-family: 'Muller';
-    src: url('../../_fonts/Muller/Muller-ExtraBold.otf') format('opentype');
+  font-family: "Muller";
+  src: url("../../_fonts/Muller/Muller-ExtraBold.otf") format("opentype");
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-    max-width: 1210px;
-    width: 60%;
-    margin: 0 auto;
+  max-width: 1210px;
+  width: 60%;
+  margin: 0 auto;
 }

@@ -1,6 +1,12 @@
 .header {
   height: 40px;
-  background: linear-gradient(90deg, #3951E7 0%, #832AB9 100%);
+  background: linear-gradient(90deg, #3951e7 0%, #832ab9 100%);
+
+  &__logo {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   &__content {
     display: flex;
@@ -14,15 +20,20 @@
 
   &__languageSwitcher {
     width: 76px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__language {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: relative;
     height: 40px;
     padding-left: 8px;
-    color: #FFF;
+    color: #fff;
 
     &__label {
       font-size: 12px;

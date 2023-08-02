@@ -5,11 +5,31 @@ import Image from "next/image";
 import logo from "@/public/logo.svg";
 import arrowUp from "@/public/navigation/arrow-up.svg";
 import arrowDown from "@/public/navigation/arrow-down.svg";
-import flagRus from "@/public/flags/flag-rus.svg";
 import styles from "./Header.module.scss";
+import { ILanguage } from "@/app/_global/types";
+import { useAppSelector } from "@/app/_redux/hooks";
+import { useRouter } from "next/navigation";
 
-const Header = () => {
+const Header: React.FC = () => {
+  const router = useRouter();
+  const selectedLanguageName: string = useAppSelector(
+    (state) => state.languages.selectedLanguage
+  );
+  const languages: ILanguage[] = useAppSelector(
+    (state) => state.languages.languages
+  );
   const [isOpened, setOpened] = useState<boolean>(false);
+  const [selectedLanguage, setSelectedLanguage] = useState<
+    ILanguage | undefined
+  >(
+    languages.find(
+      (lan: ILanguage): boolean => lan.name === selectedLanguageName
+    )
+  );
+
+  const handleLogoClick = (): void => {
+    router.push(`/${selectedLanguageName}`);
+  };
 
   const handleButtonClick = (): void => {
     setOpened(!isOpened);
@@ -18,21 +38,34 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.header__content}>
-        <Image src={logo} alt="itmo-university-logo" width={160} height={16} />
-        <div className={styles.header__languageSwitcher} onClick={handleButtonClick}>
+        <Image
+          priority
+          src={logo}
+          alt="itmo-university-logo"
+          width={160}
+          height={16}
+          className={styles.header__logo}
+          onClick={handleLogoClick}
+        />
+        <div
+          className={styles.header__languageSwitcher}
+          onClick={handleButtonClick}
+        >
           <div className={styles.header__language}>
-            <Image src={flagRus} alt="flag-russia" width={24} height={24} />
-            <span className={styles.header__language__label}>Рус</span>
+            <Image
+              priority
+              src={selectedLanguage?.logoSrc || ''}
+              width={24}
+              height={24}
+              alt={`flag-${selectedLanguageName}`}
+            />
+            <span className={styles.header__language__label}>
+              {selectedLanguage?.label}
+            </span>
             {isOpened ? (
-              <Image
-                src={arrowUp}
-                alt="arrow-up"
-              /> // TODO add alt attribute
+              <Image src={arrowUp} alt="arrow-up" />
             ) : (
-              <Image
-                src={arrowDown}
-                alt="arrow-down"
-              /> // TODO add alt attribute
+              <Image src={arrowDown} alt="arrow-down" />
             )}
           </div>
           {isOpened && <Dropdown />}

@@ -1,29 +1,24 @@
 "use client";
-import "./globals.scss";
 import React, { ReactNode } from "react";
+import { type NextFont } from "@next/font";
 import { Open_Sans } from "next/font/google";
 import Header from "@/app/_components/Header/Header";
 import { Providers } from "@/app/_redux/provider";
-import { dir } from 'i18next'
-import {languages} from "@/app/_i18n/settings";
+import { languages } from "@/app/_i18n/settings";
+import "./globals.scss";
+import { IParams } from "@/app/_global/types";
 
-const openSans = Open_Sans({ subsets: ["cyrillic"] });
+const openSans: NextFont = Open_Sans({ subsets: ["cyrillic"] });
 
 export const generateStaticParams = async () => {
-  return languages.map((lng) => ({ lng }))
+  return languages.map((lng: string) => ({ lng }));
+};
+
+interface RootLayoutProps {
+  children: ReactNode;
 }
 
-// export const metadata: Metadata = {
-//   title: 'ITMO Test App',
-//   description: 'News app on React, TypeScript and Next.js',
-// };
-
-const RootLayout = (
-  { children }: { children: ReactNode },
-  params: {
-    lng: string
-  }
-) => {
+const RootLayout: React.FC<RootLayoutProps> = ({ children }, params) => {
   const { lng } = params;
 
   return (
@@ -43,6 +38,6 @@ const RootLayout = (
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;

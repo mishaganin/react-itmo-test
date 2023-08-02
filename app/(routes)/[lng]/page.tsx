@@ -1,12 +1,17 @@
 "use client";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import NewsList from "@/app/_components/NewsList/NewsList";
 import { useAppDispatch, useAppSelector } from "@/app/_redux/hooks";
 import { getNews } from "@/app/_redux/features/newsSlice";
+import { INews, IParams } from "@/app/_global/types";
 
-const Home = ({ params }: { params: { lng?: string }}) => {
+interface HomePageProps {
+  params: IParams;
+}
+
+const Home: React.FC<HomePageProps> = ({ params }) => {
   const dispatch = useAppDispatch();
-  const news = useAppSelector((state) => state.news.news);
+  const news: INews[] = useAppSelector((state) => state.news.news);
 
   useEffect(() => {
     dispatch(getNews());

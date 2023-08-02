@@ -1,15 +1,15 @@
 .dropdown {
   position: absolute;
   width: 76px;
-  background: #FFF;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.20);
+  background: #fff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
   &__item {
     display: flex;
     padding: 8px 16px 8px 8px;
 
     &_dark {
-      background: #F2F4FF;
+      background: #f2f4ff;
     }
 
     &__label {
