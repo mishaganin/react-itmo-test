@@ -5,6 +5,11 @@
   background: #FFF;
   box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.16);
 
+  &_unloaded {
+    height: 450px;
+    background: #F2F4FF;
+  }
+
   &__image {
     border-radius: 16px 16px 0 0;
   }

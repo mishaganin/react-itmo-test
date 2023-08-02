@@ -1,21 +1,18 @@
 "use client";
-import NewsList from "@/app/_components/NewsList/NewsList";
-import { useSelector, useDispatch } from "react-redux";
-import { INews } from "@/app/_global/types";
-import { useAppDispatch, useAppSelector } from "@/app/_redux/hooks";
-import { Providers } from "@/app/_redux/provider";
 import { useEffect } from "react";
+import NewsList from "@/app/_components/NewsList/NewsList";
+import { useAppDispatch, useAppSelector } from "@/app/_redux/hooks";
 import { getNews } from "@/app/_redux/features/newsSlice";
 
-const Home = () => {
+const Home = ({ params }: { params: { lng?: string }}) => {
   const dispatch = useAppDispatch();
-  const data = useAppSelector((state) => state.news);
+  const news = useAppSelector((state) => state.news.news);
 
   useEffect(() => {
     dispatch(getNews());
   }, []);
 
-  return <NewsList news={data.news} />;
+  return <NewsList news={news} params={params} />;
 };
 
 export default Home;

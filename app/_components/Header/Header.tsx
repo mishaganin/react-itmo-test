@@ -19,17 +19,19 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.header__content}>
         <Image src={logo} alt="itmo-university-logo" width={160} height={16} />
-        <div className={styles.header__languageSwitcher}>
+        <div className={styles.header__languageSwitcher} onClick={handleButtonClick}>
           <div className={styles.header__language}>
             <Image src={flagRus} alt="flag-russia" width={24} height={24} />
             <span className={styles.header__language__label}>Рус</span>
             {isOpened ? (
-              <Image src={arrowUp} alt="arrow-up" onClick={handleButtonClick} /> // TODO add alt attribute
+              <Image
+                src={arrowUp}
+                alt="arrow-up"
+              /> // TODO add alt attribute
             ) : (
               <Image
                 src={arrowDown}
                 alt="arrow-down"
-                onClick={handleButtonClick}
               /> // TODO add alt attribute
             )}
           </div>

@@ -1,4 +1,4 @@
-import { configureStore, createAsyncThunk } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import newsReducer from "./features/newsSlice";
 
 export const store = configureStore({

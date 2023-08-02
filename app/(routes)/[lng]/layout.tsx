@@ -1,24 +1,33 @@
 "use client";
 import "./globals.scss";
 import React, { ReactNode } from "react";
-import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import Header from "@/app/_components/Header/Header";
-import NewsList from "@/app/_components/NewsList/NewsList";
 import { Providers } from "@/app/_redux/provider";
-import { store } from "@/app/_redux/store";
-import { Provider } from "react-redux";
+import { dir } from 'i18next'
+import {languages} from "@/app/_i18n/settings";
 
 const openSans = Open_Sans({ subsets: ["cyrillic"] });
+
+export const generateStaticParams = async () => {
+  return languages.map((lng) => ({ lng }))
+}
 
 // export const metadata: Metadata = {
 //   title: 'ITMO Test App',
 //   description: 'News app on React, TypeScript and Next.js',
 // };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const RootLayout = (
+  { children }: { children: ReactNode },
+  params: {
+    lng: string
+  }
+) => {
+  const { lng } = params;
+
   return (
-    <html lang="en">
+    <html lang={lng}>
       <head>
         <title>ITMO Test App</title>
         <meta
@@ -35,3 +44,5 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
+
+export default RootLayout;
